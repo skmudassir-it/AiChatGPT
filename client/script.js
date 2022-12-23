@@ -7,23 +7,23 @@ const chatConatainer = document.querySelector('#chat_container');
 let loadInterval;
 
 function loader(element) {
-  element.textContent = '';
+  element.textContent = ''
   loadInterval = setInterval(() => {
     element.textContent += '.';
     if (element.textContent === '.......'){
       element.textContent = '';
     }
-  },300)
+  },300);
 }
 
 function typeText(element, text) {
-  let index = 0;
+  let index = 0
   let interval = setInterval(()=>{
     if(index < text.length) {
       element.innerHTML += text.charAt(index);
-      index++;
+      index++
     } else {
-      clearInterval(interval);
+      clearInterval(interval)
     }
   },20)
 }
@@ -33,15 +33,15 @@ function generateUniqueId() {
   const randomNumber = Math.random();
   const hexadecimalString = randomNumber.toString(16);
 
-  return `id-${timestamp}-${hexadecimalString}`
+  return `id-${timestamp}-${hexadecimalString}`;
 }
 
-function chatStripe (isAI, value, uniqueId) {
+function chatStripe(isAI, value, uniqueId) {
   return (
     `
     <div class="wrapper ${isAI && 'ai'}">
-      <div class="chat>
-        <div className="profile">
+      <div class="chat">
+        <div class="profile">
           <img 
             src="${isAI ? bot :user}"
             alt = "${isAI ? 'bot' :'user'}"

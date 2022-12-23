@@ -12,7 +12,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express();
-app.unsubscribe(cors());
+app.use(cors());
 app.use(express.json());
 
 app.get('/', async (req, res) => {
@@ -41,7 +41,7 @@ app.post('/', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).send({ error })
+        res.status(500).send(error || "Something went wrong!!!" );
     }
 })
 
